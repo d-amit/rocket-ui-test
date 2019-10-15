@@ -3,6 +3,7 @@ import ConnectedView from './ConnectedView';
 import {fetchLaunchesIfNeeded, updateDisplayLaunchTarget} from "../actions/Launches";
 import Launch from '../components/Launch';
 import {fetchRocket} from "../actions/Rockets";
+import rocketDetails from "../stores/RocketReducer";
 
 class LaunchesView extends Component {
 
@@ -17,7 +18,8 @@ class LaunchesView extends Component {
   }
 
   getContent() {
-    const { launchCollection } = this.props;
+    const { launchCollection, rocketDetails } = this.props;
+    const { launchFlightNumber } = launchCollection;
 
     if (!launchCollection || launchCollection.fetching) {
       return <div> LOADING </div>;
@@ -30,11 +32,18 @@ class LaunchesView extends Component {
     const launches = [];
 
     launchCollection.launches.forEach((launch, i) => {
+      let rocket;
+
+      if (launchFlightNumber !== undefined && launchFlightNumber === launch.flight_number) {
+        rocket = rocketDetails ? rocketDetails.rocket : undefined;
+      }
+
       launches.push(
         <Launch
           key={i.toString()}
           launch={launch}
           handleLaunchClick={this.handleLaunchClick}
+          rocket={rocket}
         />
       );
     });
@@ -45,9 +54,9 @@ class LaunchesView extends Component {
   handleLaunchClick(launch) {
     const { dispatch } = this.props;
     const launchFlightNumber = launch ? launch.flight_number : undefined;
-    updateDisplayLaunchTarget({ dispatch, launchFlightNumber });
     const rocketId = launch.rocket.rocket_id;
-    console.log('rocketId: ', rocketId);
+
+    updateDisplayLaunchTarget({ dispatch, launchFlightNumber });
     fetchRocket({ dispatch, rocketId });
   }
 
