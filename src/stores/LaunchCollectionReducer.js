@@ -1,4 +1,4 @@
-import { ACTIONS } from '../actions/Launches';
+import ACTIONS from "../constants";
 
 const initialState = {
   launches: [],

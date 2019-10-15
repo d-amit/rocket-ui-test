@@ -1,9 +1,5 @@
 import LaunchService from '../services/LaunchService';
-
-export const ACTIONS = {
-  REQUEST_LAUNCHES: 'REQUEST_LAUNCHES',
-  RECEIVE_LAUNCHES: 'RECEIVE_LAUNCHES'
-};
+import ACTIONS from "../constants";
 
 export const requestLaunches = () => ({
   type: ACTIONS.REQUEST_LAUNCHES

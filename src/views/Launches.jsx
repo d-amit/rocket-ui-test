@@ -4,6 +4,12 @@ import {fetchLaunchesIfNeeded} from "../actions/Launches";
 import Launch from '../components/Launch';
 
 class LaunchesView extends Component {
+
+  constructor(props) {
+    super(props);
+    this.handleLaunchClick = this.handleLaunchClick.bind(this);
+  }
+
   componentDidMount() {
     const { dispatch, launchesCollection } = this.props;
     fetchLaunchesIfNeeded({ dispatch, launchesCollection });
@@ -27,11 +33,16 @@ class LaunchesView extends Component {
         <Launch
           key={i.toString()}
           launch={launch}
+          handleLaunchClick={this.handleLaunchClick}
         />
       );
     });
 
     return <ul>{launches}</ul>;
+  }
+
+  handleLaunchClick(launch) {
+    console.info(launch);
   }
 
   render() {
