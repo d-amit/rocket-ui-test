@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ConnectedView from './ConnectedView';
-import {fetchLaunchesIfNeeded} from "../actions/Launches";
+import {fetchLaunchesIfNeeded, updateDisplayLaunchTarget} from "../actions/Launches";
 import Launch from '../components/Launch';
 
 class LaunchesView extends Component {
@@ -42,7 +42,11 @@ class LaunchesView extends Component {
   }
 
   handleLaunchClick(launch) {
-    console.info(launch);
+    const { dispatch } = this.props;
+    const launchFlightNumber = launch ? launch.flight_number : undefined;
+    updateDisplayLaunchTarget({ dispatch, launchFlightNumber });
+    const rocketId = launch.rocket.rocket_id;
+    console.log('rocketId: ', rocketId);
   }
 
   render() {

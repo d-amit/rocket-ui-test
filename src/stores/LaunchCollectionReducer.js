@@ -14,6 +14,10 @@ const actionHandlers = {
     ...state,
     fetching: false,
     launches: [...state.launches, ...action.payload.launches]
+  }),
+  [ACTIONS.DISPLAY_LAUNCH_DETAILS]: ({ state, action }) => ({
+    ...state,
+    launchFlightNumber: action.payload.flightNumber
   })
 };
 

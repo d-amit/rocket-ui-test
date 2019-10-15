@@ -12,6 +12,13 @@ const receiveLaunches = response => ({
   }
 });
 
+const displayLaunchDetails = (launchFlightNumber) => ({
+  type: ACTIONS.DISPLAY_LAUNCH_DETAILS,
+  payload: {
+    flightNumber: launchFlightNumber
+  }
+});
+
 export const fetchLaunches = dispatch => {
   dispatch(requestLaunches());
   return LaunchService.get().then(response => dispatch(receiveLaunches(response)));
@@ -21,3 +28,7 @@ const shouldFetchLaunches = launchCollection => !launchCollection || !launchColl
 
 export const fetchLaunchesIfNeeded = ({ dispatch, launchCollection }) =>
   shouldFetchLaunches(launchCollection) && fetchLaunches(dispatch);
+
+export const updateDisplayLaunchTarget = ({ dispatch, launchFlightNumber }) => {
+  dispatch(displayLaunchDetails(launchFlightNumber));
+};
