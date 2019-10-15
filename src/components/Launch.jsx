@@ -6,7 +6,7 @@ const Launch = ({ launch, handleLaunchClick, rocket }) => (
     <div> Flight Number: { launch.flight_number } </div>
     {
       rocket &&
-        <dl>
+        <dl className='horizontal-list'>
           <dt>ROCKET ID</dt><dd>{rocket.rocket_id}</dd>
           <dt>ROCKET NAME</dt><dd>{rocket.rocket_name}</dd>
           <dt>COST PER LAUNCH</dt><dd>{rocket.cost_per_launch}</dd>

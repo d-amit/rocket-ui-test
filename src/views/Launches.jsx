@@ -52,12 +52,18 @@ class LaunchesView extends Component {
   }
 
   handleLaunchClick(launch) {
-    const { dispatch } = this.props;
+    const { dispatch, launchCollection } = this.props;
     const launchFlightNumber = launch ? launch.flight_number : undefined;
+    const prevFlightNumber = launchCollection.launchFlightNumber;
     const rocketId = launch.rocket.rocket_id;
 
-    updateDisplayLaunchTarget({ dispatch, launchFlightNumber });
-    fetchRocket({ dispatch, rocketId });
+    if (prevFlightNumber !== undefined && launchFlightNumber === prevFlightNumber) {
+      updateDisplayLaunchTarget({ dispatch, undefined });
+    }
+    else {
+      updateDisplayLaunchTarget({ dispatch, launchFlightNumber });
+      fetchRocket({ dispatch, rocketId });
+    }
   }
 
   render() {
