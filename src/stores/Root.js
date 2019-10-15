@@ -1,8 +1,10 @@
 import { createStore, combineReducers } from 'redux';
 import launchCollection from './LaunchCollectionReducer';
+import rocketReducer from './RocketReducer';
 
 const rootReducer = combineReducers({
-  launchCollection
+  launchCollection,
+  rocketReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
