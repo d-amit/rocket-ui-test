@@ -5,6 +5,7 @@ const rootReducer = combineReducers({
   launchCollection
 });
 
-const store = createStore(rootReducer);
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const store = createStore(rootReducer, composeEnhancer);
 
 export default store;
