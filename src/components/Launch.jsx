@@ -9,8 +9,8 @@ const Launch = ({ launch, handleLaunchClick, rocket }) => (
         <dl className='horizontal-list'>
           <dt>ROCKET ID</dt><dd>{rocket.rocket_id}</dd>
           <dt>ROCKET NAME</dt><dd>{rocket.rocket_name}</dd>
-          <dt>COST PER LAUNCH</dt><dd>{rocket.cost_per_launch}</dd>
-          <dt>SUCCESS RATE</dt><dd>{rocket.success_rate_pct}</dd>
+          <dt>COST PER LAUNCH</dt><dd>${rocket.cost_per_launch}</dd>
+          <dt>SUCCESS RATE</dt><dd>{rocket.success_rate_pct}%</dd>
           <dt>DESCRIPTION</dt><dd>{rocket.description}</dd>
         </dl>
     }
