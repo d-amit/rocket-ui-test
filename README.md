@@ -74,7 +74,7 @@ npm start
 npm run dev
 ```
 
-Open the web browser to `http://localhost:7357/`
+Open the web browser to [http://localhost:7357](http://localhost:7357).
 
 
 ### To test
